@@ -98,13 +98,15 @@ main_page_content = '''
           </a>
           <div class="scale-media" id="trailer-video-container">
           </div>
+          <p>
+          </p>
         </div>
       </div>
     </div>
 
     <!-- Main Page Content -->
     <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="color:white;">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
@@ -113,7 +115,8 @@ main_page_content = '''
       </div>
     </div>
     <div class="container">
-      {movie_tiles}
+        {movie_tiles}
+        {show_tiles}
     </div>
   </body>
 </html>
@@ -125,6 +128,13 @@ movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
+</div>
+'''
+
+tvshow_tile_content = '''
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+    <img src="{poster_image_url}" width="220" height="220">
+    <h2>{show_title}</h2>
 </div>
 '''
 
@@ -145,18 +155,38 @@ def create_movie_tiles_content(movies):
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
-        )
+            trailer_youtube_id=trailer_youtube_id,
+            movie_description=movie.storyline
+            )
     return content
 
+def create_tv_tiles_content(tvshows):
+    content = ''
+    for tvshow in tvshows:
+        # Extract the youtube ID from the url
+        youtube_id_match = re.search(
+            r'(?<=v=)[^&#]+', tvshow.trailer_youtube_url)
+        youtube_id_match = youtube_id_match or re.search(
+            r'(?<=be/)[^&#]+', tvshow.trailer_youtube_url)
+        trailer_youtube_id = (youtube_id_match.group(0) if youtube_id_match
+                              else None)
 
-def open_movies_page(movies):
+        # Append the tile for the movie with its content filled in
+        content += tvshow_tile_content.format(
+            show_title=tvshow.title,
+            poster_image_url=tvshow.poster_image_url,
+            trailer_youtube_id=trailer_youtube_id,
+            )
+    return content
+
+def open_movies_page(movies, tvshows):
     # Create or overwrite the output file
     output_file = open('fresh_tomatoes.html', 'w')
 
     # Replace the movie tiles placeholder generated content
     rendered_content = main_page_content.format(
-        movie_tiles=create_movie_tiles_content(movies))
+        movie_tiles=create_movie_tiles_content(movies),
+        show_tiles=create_tv_tiles_content(tvshows))
 
     # Output the file
     output_file.write(main_page_head + rendered_content)
