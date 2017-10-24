@@ -98,8 +98,6 @@ main_page_content = '''
           </a>
           <div class="scale-media" id="trailer-video-container">
           </div>
-          <p>
-          </p>
         </div>
       </div>
     </div>
