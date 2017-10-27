@@ -15,7 +15,7 @@ willDesc = "Will & Grace is an American sitcom created by Max Mutchnick and Davi
 unbreakable = "Unbreakable Kimmy Schmidt is an American television sitcom created by Tina Fey and Robert Carlock, starring Ellie Kemper in the title role, that has streamed on Netflix since March 6, 2015.[1] Originally set for a 13-episode first season on NBC for spring 2015, the show was sold to Netflix and given a two-season order.[2]"
 
 # created media objects with corresponding attributes
-Balto = media.Movie("Balto", "77 minutes", baltoDesc, "https://upload.wikimedia.org/wikipedia/en/4/48/Balto_movie_poster.jpg", "https://www.youtube.com/watch?v=a6lGULmQdb0")
+Balto = media.Movie("Balto", "77 minutes", baltoDesc, "https://upload.wikimedia.org/wikipedia/en/4/48/Balto_movie_poster.jpg", "https://www.youtube.com/watch?v=nmcxtJTLe6k")
 
 Inception = media.Movie("Inception", "148 minutes", incDesc, "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg", "https://www.youtube.com/watch?v=66TuSJo4dZM")
 
