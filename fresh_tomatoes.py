@@ -33,12 +33,13 @@ main_page_head = '''
         #trailer-video {
             width: 100%;
             height: 100%;
+            z-index: 9003;
         }
         .hanging-close {
             position: absolute;
             top: -12px;
             right: -12px;
-            z-index: 9999;
+            z-index: 9004;
         }
         .movie-tile {
             margin-bottom: 20px;
@@ -106,14 +107,8 @@ main_page_head = '''
             flex-direction: row;
             flex-wrap: wrap;
         }
-        .modal-dialog {
-            width: 1000px;
-        }
-        #movies {
-            z-index: 9997;
-        }
         #trailer {
-            z-index: 9998;
+            z-index: 9002;
             position: fixed;
         }
 
@@ -216,7 +211,7 @@ movie_tile_content = '''
 '''
 # A single tv show entry html
 tvshow_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-backdrop="static" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="220">
     <h2>{show_title}</h2>
 </div>
