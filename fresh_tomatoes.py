@@ -11,20 +11,15 @@ main_page_head = '''
     <meta charset="utf-8">
     <title>Fresh Tomatoes!</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
     <!-- Bootstrap 3 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
     <style type="text/css" media="screen">
-    
+
         body {
             padding-top: 80px;
             font-family: "Roboto", sans-serif;
@@ -34,13 +29,6 @@ main_page_head = '''
             width: 640px;
             height: 480px;
             position: absolute;
-            z-index: 9002;
-        }
-        .hanging-close {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            z-index: 9001;
         }
         #trailer-video {
             width: 100%;
@@ -93,30 +81,51 @@ main_page_head = '''
 		a {
 			text-decoration: none;
 		}
-		.butt {
-			height: 300px;
-			width: 300px;
-		}
+        .butt {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            color: black;
+        }
+        button {
+            background-color: black
+            border-color: none;
+        }
+        button:hover {
+            background-color: gray;
+            border-color: none;
+        }
         .modal-content {
             overflow-y: auto;
             flex-direction: row;
-            display: flex;
             flex-wrap: wrap;
+        }
+        .modal-dialog {
+            width: 1000px;
+        }
+        #movies {
+            z-index: 9997;
+        }
+        #trailer {
+            z-index: 9998;
+            position: fixed;
+        }
+
         }
 
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
-         $(document).on('click', '.hanging-close', '.modal-backdrop', '.modal', function (event) {
+         jQuery(document).on('click', '.modal-backdrop', function (event) {
             // Remove the src so the player itself gets removed, as this is the only
             // reliable way to ensure the video stops playing in IE
-            $("#trailer-video-container").empty();
+            jQuery("#trailer-video-container").empty();
         });
         // Start playing the video whenever the trailer modal is opened
-        $(document).on('click', '.movie-tile', function (event) {
-            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+        jQuery(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = jQuery(this).attr('data-trailer-youtube-id')
             var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
-            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+            jQuery("#trailer-video-container").empty().append(jQuery("<iframe></iframe>", {
               'id': 'trailer-video',
               'type': 'text-html',
               'src': sourceUrl,
@@ -124,9 +133,9 @@ main_page_head = '''
             }));
         });
         // Animate in the movies when the page loads
-        $(document).ready(function () {
-          $('.movie-tile').hide().first().show("fast", function showNext() {
-            $(this).next("div").show("fast", showNext);
+        jQuery(document).ready(function () {
+          jQuery('.movie-tile').hide().first().show("fast", function showNext() {
+            jQuery(this).next("div").show("fast", showNext);
           });
         });
     </script>
@@ -173,11 +182,11 @@ main_page_content = '''
     		<main>
     		      <div class="row">
     				<h2 class="col-md-6">
-                        <button type="button" class="w3-button w3-circle w3-black w3-hover-white, butt" data-toggle="modal" data-target="#movies">MOVIES
+                        <button class="butt" data-toggle="modal" data-target="#movies">MOVIES
     					</button>
     				</h2>
     				<h2 class="col-md-6">
-                        <button type="button" class="w3-button w3-circle w3-black w3-hover-white, butt" data-toggle="modal" data-target="#tvshows">TV SHOWS
+                        <button class="butt" data-toggle="modal" data-target="#tvshows">TV SHOWS
     				    </button>
     				</h2>
     			  </div>
