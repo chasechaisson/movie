@@ -19,7 +19,9 @@ main_page_head = '''
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style type="text/css" media="screen">
-
+        * {
+        box-sizing: inherit !important;
+        }
         body {
             padding-top: 80px;
             font-family: "Roboto", sans-serif;
@@ -42,8 +44,7 @@ main_page_head = '''
             z-index: 9004;
         }
         .movie-tile {
-            margin-bottom: 20px;
-            padding-top: 20px;
+            padding: 50px;
             z-index: 9005;
             display: block !important;
         }
@@ -54,12 +55,13 @@ main_page_head = '''
         .scale-media {
             padding-bottom: 56.25%;
             position: relative;
+            width: 100%;
         }
         .scale-media iframe {
             border: none;
             height: 100%;
-            position: absolute;
             width: 100%;
+            position: absolute;
             left: 0;
             top: 0;
             background-color: white;
@@ -108,6 +110,7 @@ main_page_head = '''
             overflow-y: auto;
             flex-direction: row;
             flex-wrap: wrap;
+            width: 100%;
         }
         #trailer {
             z-index: 9002;
