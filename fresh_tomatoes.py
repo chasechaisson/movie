@@ -44,6 +44,8 @@ main_page_head = '''
         .movie-tile {
             margin-bottom: 20px;
             padding-top: 20px;
+            z-index: 9005;
+            display: block !important;
         }
         .movie-tile:hover {
             background-color: #EEE;
@@ -161,6 +163,7 @@ main_page_content = '''
       </div>
     </div>
 
+    <!-- Movie Tiles -->
     <div class="modal" id="movies">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -169,6 +172,7 @@ main_page_content = '''
       </div>
     </div>
 
+    <!-- TV Show Tiles -->
     <div class="modal" id="tvshows">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -177,6 +181,7 @@ main_page_content = '''
       </div>
     </div>
 
+    <!-- Main Splash Page -->
     <div class="container">
         <header class="row">
     		<h1 class="col-md-12, text-left">
