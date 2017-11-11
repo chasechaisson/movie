@@ -243,9 +243,9 @@ def create_movie_tiles_content(movies):
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id,
-            movie_description=movie.storyline
             )
     return content
+
 
 def create_tv_tiles_content(tvshows):
     content = ''
@@ -265,6 +265,7 @@ def create_tv_tiles_content(tvshows):
             trailer_youtube_id=trailer_youtube_id,
             )
     return content
+
 
 def open_movies_page(movies, tvshows):
     # Create or overwrite the output file
